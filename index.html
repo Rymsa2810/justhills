@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Just Hills Barbershop</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-principal: #111113;
+      --color-acento: #ba9cba;
+      --color-rosado: #ddbfc9;
+      --color-fondo: #ffffff;
+      --fuente: 'Segoe UI', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--fuente);
+      background-color: var(--color-fondo);
+      color: var(--color-principal);
+      scroll-behavior: smooth;
+    }
+
+    header {
+      background-color: var(--color-principal);
+      color: var(--color-rosado);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    header img {
+      height: 50px;
+    }
+
+ .logo-con-nombre {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.logo-con-nombre img {
+  height: 50px;
+}
+
+.logo-con-nombre h1 {
+  font-family: 'Great Vibes', cursive;
+  font-size: 1.8rem;
+  color: var(--color-rosado);
+  margin: 0;
+}
+
+
+    nav a {
+      color: var(--color-rosado);
+      margin-left: 1rem;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--color-acento);
+    }
+
+    .hero {
+      background: linear-gradient(to right, var(--color-acento), var(--color-rosado));
+      color: white;
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+
+    .hero h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+    }
+
+    .video-presentacion {
+      margin: 2rem auto;
+      text-align: center;
+    }
+
+    .video-presentacion video {
+      width: 90%;
+      max-width: 700px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .servicios {
+      padding: 3rem 2rem;
+      background-color: #f7f7f7;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .servicio {
+      background: white;
+      border-radius: 10px;
+      padding: 1.2rem;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.06);
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .servicio:hover {
+      transform: translateY(-5px);
+    }
+
+    .servicio img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+      transition: transform 0.3s ease;
+    }
+
+    .servicio img:hover {
+      transform: scale(1.05);
+    }
+
+    .servicio h3 {
+      color: var(--color-acento);
+      margin-bottom: 0.5rem;
+    }
+
+    .blog {
+      padding: 3rem 2rem;
+      background-color: var(--color-fondo);
+      text-align: center;
+    }
+
+    .blog h2 {
+      color: var(--color-acento);
+      margin-bottom: 1rem;
+    }
+
+    .blog p {
+      max-width: 700px;
+      margin: 0 auto;
+      color: #444;
+      font-size: 1rem;
+    }
+
+    .testimonios {
+      background-color: #f2f2f2;
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+
+    .testimonios h2 {
+      color: var(--color-acento);
+      margin-bottom: 2rem;
+      font-size: 2rem;
+    }
+
+    .testimonio-comparativo {
+      max-width: 900px;
+      margin: 2rem auto;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      padding: 1.5rem;
+      transition: transform 0.3s ease;
+    }
+
+    .testimonio-comparativo:hover {
+      transform: scale(1.02);
+    }
+
+    .imagenes {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+
+    .imagenes div {
+      position: relative;
+      width: 150px;
+    }
+
+    .imagenes img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      object-fit: cover;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .etiqueta {
+      position: absolute;
+      bottom: 6px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: var(--color-acento);
+      color: white;
+      font-size: 0.8rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 20px;
+      font-weight: bold;
+      opacity: 0.9;
+    }
+
+    .comentario {
+      font-style: italic;
+      color: #333;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .agendador {
+      padding: 3rem 2rem;
+      background-color: #fff;
+      text-align: center;
+    }
+
+    .agendador iframe {
+      width: 100%;
+      max-width: 800px;
+      height: 700px;
+      border: none;
+      border-radius: 8px;
+    }
+
+    footer {
+      background-color: var(--color-principal);
+      color: white;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    footer a {
+      color: var(--color-rosado);
+      margin: 0 0.5rem;
+      text-decoration: none;
+    }
+
+    @media (max-width: 768px) {
+      .hero h2 {
+        font-size: 2rem;
+      }
+    }
+.agendador {
+  padding: 3rem 2rem;
+  background-color: #fff;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.agendador iframe {
+  width: 100%;
+  max-width: 600px;
+  height: 700px;
+  border: none;
+  border-radius: 8px;
+  flex: 1 1 60%;
+}
+
+.contacto-info {
+  flex: 1 1 30%;
+  background-color: #f9f9f9;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  font-size: 1rem;
+  max-width: 350px;
+}
+
+.contacto-info h3 {
+  color: var(--color-acento);
+  margin-bottom: 1rem;
+}
+
+.contacto-info p {
+  margin-bottom: 0.8rem;
+  color: #444;
+}
+
+.contacto-info a {
+  color: var(--color-acento);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.contacto-info a:hover {
+  text-decoration: underline;
+}
+
+.contacto-info .social {
+  margin-top: 1.2rem;
+}
+
+.contacto-info .social a {
+  display: inline-block;
+  margin-right: 1rem;
+  font-size: 1.2rem;
+}
+/* Menú hamburguesa */
+.menu-hamburguesa {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1001;
+  display: none;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.menu-hamburguesa span {
+  height: 4px;
+  width: 100%;
+  background-color: var(--color-rosado);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.menu-flotante {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 250px;
+  height: 100%;
+  background-color: var(--color-principal);
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  transition: right 0.3s ease;
+  z-index: 1000;
+}
+
+.menu-flotante a {
+  color: var(--color-rosado);
+  font-size: 1.2rem;
+  text-decoration: none;
+}
+
+.menu-flotante a:hover {
+  color: var(--color-acento);
+}
+
+.menu-abierto {
+  right: 0;
+}
+
+@media (max-width: 768px) {
+  nav {
+    display: none;
+  }
+  .menu-hamburguesa {
+    display: flex;
+  }
+}
+
+  </style>
+</head>
+<body>
+
+<!-- Botón hamburguesa -->
+<div class="menu-hamburguesa" onclick="toggleMenu()">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+
+<!-- Menú flotante -->
+<div id="menuFlotante" class="menu-flotante">
+  <a href="#inicio" onclick="cerrarMenu()">Inicio</a>
+  <a href="#servicios" onclick="cerrarMenu()">Servicios</a>
+  <a href="#blog" onclick="cerrarMenu()">Blog</a>
+  <a href="#testimonios" onclick="cerrarMenu()">Testimonios</a>
+  <a href="#agendar" onclick="cerrarMenu()">Agenda</a>
+</div>
+ 
+
+  <header>
+  <div class="logo-con-nombre">
+    <img src="logo.png" alt="Logo Just Hills" />
+    <h1>Just Hills Barbershop</h1>
+  </div>
+  <nav>
+    <a href="#inicio">Inicio</a>
+    <a href="#servicios">Servicios</a>
+    <a href="#blog">Blog</a>
+    <a href="#testimonios">Testimonios</a>
+    <a href="#agendar">Agenda</a>
+  </nav>
+</header>
+
+
+  <section class="hero" id="inicio">
+    <h2>Tu estilo, tu actitud.</h2>
+    <p>Donde la elegancia se encuentra con el cuidado personalizado.</p>
+  </section>
+
+  <section class="video-presentacion">
+    <video autoplay muted loop playsinline>
+      <source src="video-presentacion.mp4" type="video/mp4">
+      Tu navegador no soporta la reproducción de video.
+    </video>
+  </section>
+
+  <section class="servicios" id="servicios">
+    <div class="servicio">
+      <img src="servicio1.jpg" alt="Corte Caballero">
+      <h3>Corte Caballero</h3>
+      <p>Desde un estilo clásico hasta un fade moderno.</p>
+    </div>
+    <div class="servicio">
+      <img src="servicio2.jpg" alt="Corte y Barba">
+      <h3>Corte y Barba</h3>
+      <p>Look completo, barba definida y estilizada.</p>
+    </div>
+    <div class="servicio">
+      <img src="servicio3.jpg" alt="Corte Dama">
+      <h3>Corte Dama</h3>
+      <p>Estilo elegante, moderno y lleno de personalidad.</p>
+    </div>
+    <div class="servicio">
+      <img src="servicio4.jpg" alt="Lavado de Cabello">
+      <h3>Lavado de Cabello</h3>
+      <p>Un momento de relajación y cuidado para tu cuero cabelludo.</p>
+    </div>
+    <div class="servicio">
+      <img src="servicio5.jpg" alt="Servicios Especiales">
+      <h3>Servicios Especiales</h3>
+      <p>Tinte, tratamientos capilares y más.</p>
+    </div>
+  </section>
+
+ <section class="blog" id="blog">
+  <h2>DISFRUTA NUESTRO BLOG SEMAANAL PARA MAS CONSEJOS</h2>
+  <iframe src="https://justhillsbarber.blogspot.com/" width="100%" height="600" style="border:none;"></iframe>
+  <p style="text-align:center; margin-top:1rem;">
+    <a href="https://justhillsbarber.blogspot.com/" target="_blank">Ver más artículos en el blog</a>
+  </p>
+</section>
+
+
+
+  <section class="testimonios" id="testimonios">
+    <h2>Transformaciones Reales</h2>
+
+    <div class="testimonio-comparativo">
+      <div class="imagenes">
+        <div>
+          <img src="antes1.jpg" alt="Antes clienta 1">
+          <p class="etiqueta">Antes</p>
+        </div>
+        <div>
+          <img src="despues1.jpg" alt="Después clienta 1">
+          <p class="etiqueta">Después</p>
+        </div>
+      </div>
+      <p class="comentario">“Me encantó la experiencia, no solo salí con un nuevo look, ¡sino con más confianza en mí misma!”</p>
+    </div>
+
+    <div class="testimonio-comparativo">
+      <div class="imagenes">
+        <div>
+          <img src="antes2.jpg" alt="Antes clienta 2">
+          <p class="etiqueta">Antes</p>
+        </div>
+        <div>
+          <img src="despues2.jpg" alt="Después clienta 2">
+          <p class="etiqueta">Después</p>
+        </div>
+      </div>
+      <p class="comentario">“¡Una atención increíble! El corte me dio un cambio radical justo como lo imaginé.”</p>
+    </div>
+
+    <div class="testimonio-comparativo">
+      <div class="imagenes">
+        <div>
+          <img src="antes3.jpg" alt="Antes clienta 3">
+          <p class="etiqueta">Antes</p>
+        </div>
+        <div>
+          <img src="despues3.jpg" alt="Después clienta 3">
+          <p class="etiqueta">Después</p>
+        </div>
+      </div>
+      <p class="comentario">“Muy profesional, me sentí escuchada y salí feliz con el resultado. ¡Volveré sin duda!”</p>
+    </div>
+  </section>
+
+  <section class="agendador" id="agendar">
+  <iframe src="https://calendly.com/rymsa329/30min"></iframe>
+
+  <div class="contacto-info">
+    <h3>Contáctanos</h3>
+    <p><strong>Teléfono:</strong> 55 1234 5678</p>
+    <p><strong>Email:</strong> contacto@justhills.com</p>
+    <p><strong>Dirección:</strong> Calle Belleza 456, CDMX</p>
+
+    <div class="social">
+      <p><strong>Síguenos:</strong></p>
+      <a href="https://www.facebook.com/karlitahills" target="_blank">Facebook</a>
+      <a href="https://www.instagram.com/the_rolling_hair/" target="_blank">Instagram</a>
+    </div>
+  </div>
+</section>
+
+
+  <footer>
+    <p>Síguenos en 
+      <a href="#">Facebook</a> | 
+      <a href="#">Instagram</a>
+    </p>
+    <p>© 2025 Just Hills Barbershop</p>
+  </footer>
+
+<script>
+  const menu = document.getElementById('menuFlotante');
+
+  function toggleMenu() {
+    menu.classList.toggle('menu-abierto');
+  }
+
+  function cerrarMenu() {
+    menu.classList.remove('menu-abierto');
+  }
+
+  // Scroll ajustado para compensar el header
+  document.querySelectorAll('a[href^="#"]').forEach(enlace => {
+    enlace.addEventListener('click', function(e) {
+      e.preventDefault();
+      const id = this.getAttribute('href');
+      const destino = document.querySelector(id);
+      const offset = document.querySelector('header').offsetHeight; // Altura del header
+
+      if (destino) {
+        const top = destino.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top, behavior: 'smooth' });
+        cerrarMenu(); // Solo aplica si está en móvil
+      }
+    });
+  });
+</script>
+
+
+</body>
+</html>
